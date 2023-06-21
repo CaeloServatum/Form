@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #32043F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Comfortaa', cursive;
+    font-family: 'Nunito', sans-serif;
+}
+form{
+    width: clamp(200px, 400px, 500px);
+    padding: 15px;
+    margin: 15px 0 0 0;
+    background-color: #79328C;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 0 100px #79328C;
+}
+form div textarea{
+    width: 100%;
+    height: 180px;
+    resize: none;
+    margin: 0 auto 5px 0;
+}
+form div label, input, textarea{
+    margin-bottom: 5px;
+    display: flex;
+    text-transform: uppercase;
+    border-radius: 5px;
+    border-style: none;
+    outline: none;
+    padding: 5px;
+}
+form div label{
+    width: 100%;
+    text-align: center;
+    font-weight: 800;
+    font-size: 15px;
+    color: #e9a6fc;
+}
+form div input{
+    width: 100%;
+    height: 25px;
+}
+form #buttonDiv{
+    display: flex;
+    margin-top: 5px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+form div button{
+    width: 49%;
+    height: 45px;
+    border-radius: 5px;
+    outline: none;
+    border-style: none;
+    cursor: pointer;
+    background-color: #931FB3;
+    border: #33044077 solid 1px;
+    color: #f2c3ff;
+    overflow: hidden;
+}
+form div button i{
+    margin-right: 5px;
+}
+.fa-paper-plane{
+    position: relative;
+    offset-distance: 0%;
+    transition: offset-distance 0.3s ease-in, filter 0.3s ease-in;
+    top: -211px;
+    left: -245px;
+    transform: rotate(122deg);
+    offset-path: path("M 250 217.5 C 202 118.3 128 193.667 97.0001 235 C -273 -214.5 241.167 124.667 517 111 L 411.5 217.5 C 377.667 258.833 298 316.7 250 217.5 Z");
+}
+form div button:hover .fa-paper-plane{
+    offset-distance: 100%;
+    filter: drop-shadow(2px 2px 1px #471256);
+
+}
