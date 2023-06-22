@@ -36,6 +36,12 @@ form div label, input, textarea{
     outline: none;
     padding: 5px;
 }
+form div input, textarea{
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight: 400;
+    color: grey;
+}
 form div label{
     width: 100%;
     text-align: center;
@@ -45,7 +51,8 @@ form div label{
 }
 form div input{
     width: 100%;
-    height: 25px;
+    font-size: 13px;
+    padding: 10px;
 }
 form #buttonDiv{
     display: flex;
@@ -80,5 +87,38 @@ form div button i{
 form div button:hover .fa-paper-plane{
     offset-distance: 100%;
     filter: drop-shadow(2px 2px 1px #471256);
-
+}
+form div button .fa-eraser{
+    position: relative;
+    left: 0;
+}
+form div button:hover .fa-eraser{
+    animation: erase 0.8s linear infinite;
+}
+@keyframes erase {
+    0% {
+        left: 0px;
+    }
+    50%{
+        left: -5px;
+    }
+    80%{
+        left: 5px;
+    }
+    100%{
+        left: 0px;
+    }
+}
+form .required::placeholder{
+    color: rgba(255, 0, 0, 0.596);
+}
+form .wrongValue{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
+    background-color: #931FB3;
+    border-radius: 5px;
+    border: 1px solid #66137D;
+    padding: 10px;
 }
