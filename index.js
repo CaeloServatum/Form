@@ -1,31 +1,42 @@
 window.addEventListener('DOMContentLoaded',()=>{
-    
     // Const
     const nameInput = document.querySelector('#name');
     const emailInput = document.querySelector('#email');
-    const cclInput = document.querySelector('#cc');
-    const regEx = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
+    const ccInput = document.querySelector('#cc');
+    const sendButton = document.querySelector('.disableButton');
+    const blurDiv = document.querySelector('.blurBody');
+    const divLoader = document.querySelector('.divLoader');
+    const regEx = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    const validationObject = {
+        email: "",
+        name: "",
+        cc: "",
+    };
     // -----
-
     // Variables
-    let inputTarget = inputName =>{
-        inputName.addEventListener('input',e =>{
+    let validation;
+    let inputValue = () =>{
+        if(nameInput.value != '' && emailInput.value != '' && ccInput.value != '' && regEx.test(emailInput.value) && regEx.test(ccInput.value)){
+            sendButton.classList.remove('disableButton');
+            sendButton.removeAttribute('disabled');
+            validationObject.name = nameInput.value;
+            validationObject.email = emailInput.value;
+            validationObject.cc = ccInput.value;
+            console.log(validationObject);
+        }
+    };
+    let validateInput = inputName =>{
+        inputName.addEventListener('input',e => {
             if(e.target.value == ''){
-                console.log('tavaciopa');
-                console.log();
                 e.target.placeholder = `The ${e.target.id} are required`;
                 inputName.classList.add('required');
-            } else {
-                console.log('Se esta escribiendo');
             }
-        })
-    };
-    let validEmail = inputName =>{
-        inputName.addEventListener('input',e => {
             if (regEx.test(e.target.value)) {
-                e.target.parentElement.querySelector(".wrongValue").remove;
+                if(e.target.parentElement.querySelector(".wrongValue")){
+                    e.target.parentElement.querySelector(".wrongValue").remove();
+                }
             } else {
-                if(!e.target.parentElement.querySelector(".wrongValue")){
+                if(!e.target.parentElement.querySelector(".wrongValue") && e.target.type == "email"){
                     const divElement = document.createElement("div");
                     divElement.classList.add('wrongValue');
                     divElement.textContent = "Please, enter a valid email";
@@ -33,23 +44,33 @@ window.addEventListener('DOMContentLoaded',()=>{
                     return;
                 } 
             }
+            inputValue();
+            let arrayOfValues = Object.values(validationObject);
+            validation = arrayOfValues.some(element=>{element == ''})
+            console.log(validation, validationObject);
           })
     };
-      
     // -----
-
     // Events
-
+    sendButton.addEventListener('click',(e)=>{
+        e.preventDefault();
+        if(validation == false){
+            blurDiv.style.filter = "blur(5px)";
+            divLoader.style.display = "flex";
+            setTimeout(()=> {
+                blurDiv.style.filter = "blur(0px)";
+                divLoader.style.display = "none";
+            },3000)
+        }
+        /* if(validationObject == ) */
+    });
     // -----
     // Fuctions
-
+   
     // -----
     // Call Fuctions
-    inputTarget(nameInput);
-    inputTarget(emailInput);
-    inputTarget(cclInput);
-    validEmail(emailInput);
-    validEmail(cclInput);
+    validateInput(nameInput);
+    validateInput(emailInput);
+    validateInput(ccInput);
     // -----
-    {/* <div class="required">olaowo</div> */}
 })
