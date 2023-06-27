@@ -39,7 +39,7 @@ form div label, input, textarea{
 }
 form div input, textarea{
     text-transform: capitalize;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400;
     color: grey;
 }
@@ -52,7 +52,6 @@ form div label{
 }
 form div input{
     width: 100%;
-    font-size: 13px;
     padding: 10px;
 }
 #email, #cc{
@@ -194,6 +193,17 @@ form .disableButton {
     form{
         width: 347px;
         padding: 10px;
+    }
+    @keyframes sendSucefully{
+        0%{
+            transform: translateY(-10%);
+        }
+        10%, 90%{
+            transform: translateY(110px);
+        }
+        100%{
+            transform: translateY(-10%);
+        }
     }
 }
 @media (max-width: 320px) {
