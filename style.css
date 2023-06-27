@@ -13,9 +13,8 @@ body{
     font-family: 'Nunito', sans-serif;
 }
 form{
-    width: clamp(200px, 400px, 500px);
+    width: 35%;
     padding: 15px;
-    margin: 15px 0 0 0;
     background-color: #79328C;
     display: flex;
     flex-direction: column;
@@ -70,7 +69,7 @@ form div button{
     outline: none;
     border-style: none;
     cursor: pointer;
-    background-color: #931FB3;
+    background-color: #c229ec;
     border: #33044077 solid 1px;
     color: #f2c3ff;
     overflow: hidden;
@@ -128,10 +127,15 @@ form .wrongValue{
 }
 form .disableButton {
     border: 1px solid #66137D;
-    background-color: #c229ec;
+    background-color: #931FB3;
     cursor: not-allowed;
 }
 .blurBody{
+    width: 100%;
+    margin: 15px auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     filter: blur(0px);
 }
 .divLoader{
@@ -164,6 +168,7 @@ form .disableButton {
     border-radius: 5px;
     color: #f2c3ff;
     top: -10%;
+    transform: translateY(0%);
     animation: sendSucefully 3s ease-in-out;
 }
   
@@ -180,34 +185,23 @@ form .disableButton {
 }
 @keyframes sendSucefully{
     0%{
-        transform: translateY(-10%);
+        transform: translateY(0%);
     }
     10%, 90%{
-        transform: translateY(68px);
+        transform: translateY(179%);
     }
     100%{
-        transform: translateY(-10%);
+        transform: translateY(0%);
     }
 }
-@media (max-width: 375px) {
+@media (max-width: 768px) {
     form{
-        width: 347px;
+        width: 75%;
+    }
+}
+@media (max-width: 425px) {
+    form{
+        width: 95%;
         padding: 10px;
-    }
-    @keyframes sendSucefully{
-        0%{
-            transform: translateY(-10%);
-        }
-        10%, 90%{
-            transform: translateY(110px);
-        }
-        100%{
-            transform: translateY(-10%);
-        }
-    }
-}
-@media (max-width: 320px) {
-    form{
-        width: 297px;
     }
 }
