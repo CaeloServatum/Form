@@ -3,9 +3,11 @@ window.addEventListener('DOMContentLoaded',()=>{
     const nameInput = document.querySelector('#name');
     const emailInput = document.querySelector('#email');
     const ccInput = document.querySelector('#cc');
+    const commentText = document.querySelector('#comments');
     const sendButton = document.querySelector('.disableButton');
     const blurDiv = document.querySelector('.blurBody');
     const divLoader = document.querySelector('.divLoader');
+    const sendDiv = document.querySelector('.sendSucefully');
     const regEx = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
     const validationObject = {
         email: "",
@@ -22,7 +24,6 @@ window.addEventListener('DOMContentLoaded',()=>{
             validationObject.name = nameInput.value;
             validationObject.email = emailInput.value;
             validationObject.cc = ccInput.value;
-            console.log(validationObject);
         }
     };
     let validateInput = inputName =>{
@@ -47,7 +48,6 @@ window.addEventListener('DOMContentLoaded',()=>{
             inputValue();
             let arrayOfValues = Object.values(validationObject);
             validation = arrayOfValues.some(element=>{element == ''})
-            console.log(validation, validationObject);
           })
     };
     // -----
@@ -60,6 +60,18 @@ window.addEventListener('DOMContentLoaded',()=>{
             setTimeout(()=> {
                 blurDiv.style.filter = "blur(0px)";
                 divLoader.style.display = "none";
+                nameInput.value = "";
+                emailInput.value = "";
+                ccInput.value = "";
+                commentText.value = "";
+                sendButton.classList.add('disableButton');
+                sendButton.setAttribute('disabled','true');
+                setTimeout(()=>{
+                    sendDiv.style.display = "flex";
+                    setTimeout(()=>{
+                        sendDiv.style.display = "none";
+                    },3500)
+                })
             },3000)
         }
         /* if(validationObject == ) */
