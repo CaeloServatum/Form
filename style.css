@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 body{
+    width: 100vw;
     background-color: #32043F;
     display: flex;
     align-items: center;
@@ -189,4 +190,14 @@ form .disableButton {
         transform: translateY(-10%);
     }
 }
-      
+@media (max-width: 375px) {
+    form{
+        width: 347px;
+        padding: 10px;
+    }
+}
+@media (max-width: 320px) {
+    form{
+        width: 297px;
+    }
+}
